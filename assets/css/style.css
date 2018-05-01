@@ -86,7 +86,7 @@ img {
 p.rating {
   width: 500px;
   height: 5px;
-  background-color: rgba(77, 39, 75, 0.548) !important;
+  background-color: rgba(77, 39, 75, 0) !important;
 }
 
 
@@ -108,13 +108,15 @@ hr {
   
 }
 .shapeThisShit {
+  float: left;
+  padding: 5px 5px 5px;
   width: 500px;
   height: 300px;
   background-color: rgba(0, 0, 0, 0.171);
   align-self: center;
   text-align: center;
   justify-content: center;
-  margin: 0 auto 30px;
+  margin: 0 10px 30px;
   
   
 }
