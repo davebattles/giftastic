@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var gifArray = ["chicken", "taylor swift", "Kpop", "dance off","rainforest", "space", "captain planet"];
+  var gifArray = ["Kpop", "dance off", "space"];
   var gifBox = $(".buttonSpace");
   var content = $(".gif-view");
   var searchBox = $("#searchBox");
@@ -76,7 +76,13 @@ function renderGifs() {
 
         var div = $("<div>");
         var img = $("<img>");
+        var hr = $("<hr>");
+        var br = $("<br>");
         img.addClass("thisistheimage");
+        
+       
+        div.addClass("shapeThisShit");
+
         img.attr("src", result[i].images.fixed_height_still.url);
         img.attr("data-still", result[i].images.fixed_height_still.url);
         img.attr("data-animate", result[i].images.fixed_height.url);
@@ -86,14 +92,19 @@ function renderGifs() {
         p.addClass("rating");
         
         var title = $("<p>");
-        title.addClass("gif-title");
+        title.addClass("gif-title col");
         title.text(result[i].title);
-
-       
+        
+          div.prepend(br);
           div.prepend(img);
-          div.prepend("Rated: " + rating+"<br>");
+          div.prepend(br);
+       
+          div.prepend("rated: " + rating+"<br>");
+         
           div.prepend(p);
           div.prepend(title);
+          div.prepend(div);
+     
 
           content.prepend(div);
       

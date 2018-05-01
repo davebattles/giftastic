@@ -7,9 +7,12 @@ body {
   font-size: 15px;
   color: #fff;
   text-shadow: #000 2px 2px;
-  background-color: #4e636d;
+  background-color: #181e20;
   
   
+}
+div.row {
+  padding: 10px 0px 100px;
 }
 .btn {
   text-align: center;
@@ -33,7 +36,7 @@ body {
   width: 100%;
 }
 
-.col.s2 {
+.col.s3 {
   background-color: #ccc;
   color: #000;
 
@@ -57,6 +60,51 @@ footer {
 }
 
 img {
-  padding: 10px;
+  padding: 1px;
+  margin: 10px;
   border: 5px rgba(255, 255, 255, 0.486) solid;
+
+}
+
+p.rating {
+  width: 500px;
+  height: 5px;
+  background-color: rgba(77, 39, 75, 0.548) !important;
+}
+
+
+div img{
+
+background-color: rgb(90, 75, 89);
+}
+
+.col {
+  color: rgb(148, 123, 144);
+  padding: 50px;
+  font-size: 15px;
+  
+}
+
+hr {
+  width: 300px;
+  align-self: left;
+  
+}
+.shapeThisShit {
+  
+  
+  margin: 15px 0px 15px;
+  width: 500px;
+  height: 300px;
+  background-color: rgba(0, 0, 0, 0.171);
+  align-self: center;
+  text-align: center;
+  justify-content: center;
+  
+  
+}
+
+div.gif-view {
+  margin: 0px !important;
+  padding: 0px !important;
 }
