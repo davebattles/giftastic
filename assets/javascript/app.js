@@ -1,17 +1,9 @@
 $(document).ready(function() {
-
-
-
-
   var gifArray = ["chicken", "taylor swift", "Kpop", "dance off","rainforest", "space", "captain planet"];
   var gifBox = $(".buttonSpace");
   var content = $(".gif-view");
   var searchBox = $("#searchBox");
   var addNewGifBtn = $("#add-new-gif-btn");
-
-
-
-
   /***
  *    █████████╗   █████╗   ██╗██████╗
  *    ██╔════██║   ██████╗  ████╔════╝
@@ -21,7 +13,6 @@ $(document).ready(function() {
  *    ╚═╝     ╚═════╝╚═╝  ╚═══╝╚═════╝
  *                                    
  */
-
 //clear gifs 
 function clearGifs(){
   $(".gif-view").empty();
@@ -53,10 +44,6 @@ if(searchBox.val() === "") {
   searchBox.val("");
 }
 });
-
-
-
-
 /***
  *     █████╗      ██╗ █████╗ ██╗  ██╗
  *    ██╔══██╗     ██║██╔══██╗╚██╗██╔╝
@@ -65,18 +52,12 @@ if(searchBox.val() === "") {
  *    ██║  ██║╚█████╔╝██║  ██║██╔╝ ██╗
  *    ╚═╝  ╚═╝ ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
  */                                    
-
-
 var clickBtn = $(".gifbtn");
 $(document).on("click", ".gifbtn", renderGifs);
-
-
 function renderGifs() {
   clearGifs();
   var gifData = $(this).attr("gif-data");
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gifData + "&api_key=5lOCeJsh28VZ18MUoQMrmIXxQmHUEdrX&limit=10";
-
-
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -87,45 +68,35 @@ function renderGifs() {
       var result = response.data;
       var still = "images.fixed_height_still.url";
       var animate = "images.fixed_height.url";
-      // var rating = result[i].rating;
-
+      
       for ( var i = 0 ; i < result.length ; i++) {
 
         //THIS IS WHERE I MESS WITH GIFS
+        var rating = result[i].rating;
 
         var div = $("<div>");
         var img = $("<img>");
         img.addClass("thisistheimage");
-        img.attr("src", result[i].still);
-        img.attr("data-still", result[i].still);
-        img.attr("data-animate", result[i].animate);
+        img.attr("src", result[i].images.fixed_height_still.url);
+        img.attr("data-still", result[i].images.fixed_height_still.url);
+        img.attr("data-animate", result[i].images.fixed_height.url);
         img.attr("data-title", result[i].title);
         img.attr("data-state", "still");
-
         var p = $("<p>");
         p.addClass("rating");
-        // p.text("Rated: " + rating);
-
-
+        
         var title = $("<p>");
         title.addClass("gif-title");
         title.text(result[i].title);
 
-        
        
           div.prepend(img);
-          
+          div.prepend("Rated: " + rating+"<br>");
           div.prepend(p);
           div.prepend(title);
 
           content.prepend(div);
       
-
-
-
-
-
-
 
       }
 
@@ -140,7 +111,17 @@ function renderGifs() {
 
 }
 
-
+$(document).on("click", ".thisistheimage", function() {
+  var state = $(this).attr("data-state");
+  if(state === "still") {
+      $(this).attr("src", $(this).attr("data-animate"));
+      $(this).attr("data-state", "animate");
+    }
+    else {
+      $(this).attr("src", $(this).attr("data-still"));
+      $(this).attr("data-state", "still");
+    }
+});
 
 /***
  *    ███████████████╗█████╗██████╗████████╗
